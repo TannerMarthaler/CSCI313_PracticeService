@@ -16,6 +16,13 @@ export class NewAccountComponent {
     private accountService: AccountsService
   ) {}
 
+  ngOnInit() {
+    this.accountService.statusUpdated.subscribe((data: string) => {
+      this.para = data;
+      console.log(data);
+    });
+  }
+
   onCreateAccount(accountName: string, accountStatus: string) {
     // this.accountAdded.emit({
     //   name: accountName,
@@ -27,4 +34,6 @@ export class NewAccountComponent {
     // this.loggingService.logStatusChange(accountStatus);
     // console.log(`A status change occured, the new status is ${accountStatus}`);
   }
+
+  para: string = '';
 }

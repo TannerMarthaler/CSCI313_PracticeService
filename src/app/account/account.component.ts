@@ -33,5 +33,10 @@ export class AccountComponent {
     this.accountService.updateStatus(this.id, status);
     // this.loggingService.logStatusChange(status);
     // console.log(`A status change occured, the new status is ${status}`);
+    this.accountService.statusUpdated.emit(status);
+  }
+
+  removeAccount(): void {
+    this.accountService.deleteAccount(this.id);
   }
 }
